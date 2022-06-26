@@ -1,0 +1,39 @@
+.container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 1.1rem;
+	.label {
+	}
+	.input {
+		padding: 0.4rem 0.5rem;
+		border: 1px solid gray;
+		background-color: white;
+		outline: none;
+		border-radius: 0.5rem;
+		transition: 200ms;
+		box-shadow: 0px 0px 1px 1px transparent;
+		&:hover {
+			background-color: #a7d6e2;
+		}
+		&--valid {
+			&:focus {
+				border-color: blue;
+				box-shadow: 0px 0px 1px 1px blue;
+			}
+		}
+		&--error {
+			border-color: red;
+			&:focus {
+				box-shadow: 0px 0px 1px 1px red;
+			}
+		}
+	}
+	.error {
+		position: absolute;
+		bottom: 0;
+		font-size: 0.8rem;
+		color: red;
+		margin-left: 0.2rem;
+	}
+}
