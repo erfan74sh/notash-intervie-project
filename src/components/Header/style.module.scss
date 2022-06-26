@@ -1,0 +1,23 @@
+.nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 3rem;
+	background-color: burlywood;
+	font-size: 1.5rem;
+	&__links {
+		display: flex;
+		align-items: center;
+		&:first-child {
+			width: 30%;
+		}
+		&:last-child {
+			width: 30%;
+			justify-content: end;
+		}
+		.link {
+			margin: 0 0.8rem;
+			text-transform: capitalize;
+		}
+	}
+}
