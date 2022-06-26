@@ -1,50 +1,62 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Formik, Form } from "formik";
+import * as yup from "yup";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// services
 import AuthService from "../services/auth.service";
+// components
+import TextInput from "../components/Inputs/TextInput";
+// icons
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 const Register = () => {
-	const [user, setUser] = useState({ username: "", email: "", password: "" });
+	const navigate = useNavigate();
+	const [isLoading, setIsLoading] = useState(false);
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
+	const handleSubmit = async (values) => {
+		setIsLoading(true);
 		try {
-			const data = await AuthService.register(user);
-			console.log(data);
+			await AuthService.register(values);
+			navigate("/login");
 		} catch (err) {
 			console.log(err);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 
-	const handleFormChange = (e) => {
-		setUser({ ...user, [e.target.name]: e.target.value });
-	};
-
 	return (
-		<div>
+		<div className="content">
 			<h1>register page</h1>
-			<form onSubmit={handleSubmit}>
-				<label>username</label>
-				<input
-					type="text"
-					name="username"
-					value={user.username}
-					onChange={(e) => handleFormChange(e)}
-				/>
-				<label>email</label>
-				<input
-					type="email"
-					name="email"
-					value={user.email}
-					onChange={(e) => handleFormChange(e)}
-				/>
-				<label>password</label>
-				<input
-					type="password"
-					name="password"
-					value={user.password}
-					onChange={(e) => handleFormChange(e)}
-				/>
-				<button type="onSubmit">register</button>
-			</form>
+			<Formik
+				initialValues={{ username: "", email: "", password: "" }}
+				validationSchema={yup.object({
+					username: yup
+						.string()
+						.max(20, "must be 20 characters or less")
+						.required("required"),
+					email: yup.string().email().required("required"),
+					password: yup
+						.string()
+						.min(8, "most be 8 characters or more")
+						.required("required"),
+				})}
+				onSubmit={handleSubmit}
+			>
+				<Form>
+					<TextInput type="text" name="username" label="username" />
+					<TextInput type="email" name="email" label="email" />
+					<TextInput type="password" name="password" label="password" />
+					<button type="onSubmit">
+						{isLoading ? (
+							<FontAwesomeIcon icon={faCircleNotch} spin />
+						) : (
+							" register"
+						)}
+					</button>
+				</Form>
+			</Formik>
 		</div>
 	);
 };
