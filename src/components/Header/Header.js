@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import AuthService from "../../services/auth.service";
+import style from "./style.module.scss";
 
 const Header = () => {
 	const navigate = useNavigate();
@@ -17,26 +18,32 @@ const Header = () => {
 
 	return (
 		<header>
-			<nav>
-				<ul>
-					<li>
+			<nav className={style.nav}>
+				<ul className={style.nav__links}>
+					<li className={style.link}>
+						<NavLink to="/">logo</NavLink>
+					</li>
+				</ul>
+				<ul className={style.nav__links}>
+					<li className={style.link}>
 						<NavLink to="/">home</NavLink>
 					</li>
-					<li>
+					<li className={style.link}>
 						<NavLink to="/profile">profile</NavLink>
 					</li>
-					<li>
+				</ul>
+				<ul className={style.nav__links}>
+					<li className={`${style.link} btn btn--secondary`}>
 						<NavLink to="/login">login</NavLink>
 					</li>
-					<li>
+					<li className={`${style.link} btn btn--primary`}>
 						<NavLink to="/register">register</NavLink>
 					</li>
-					<li>
+					<li className={`${style.link} btn btn--secondary`}>
 						<button onClick={handleLogout}>log out</button>
 					</li>
 				</ul>
 			</nav>
-			<h1>home page</h1>
 		</header>
 	);
 };
