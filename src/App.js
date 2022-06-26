@@ -6,18 +6,24 @@ import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
-import "./App.css";
+import "./App.scss";
+import AuthProvider from "./Providers/AuthProvider";
+import PageLayout from "./routes/PageLayout";
 
 function App() {
 	return (
-		<Routes>
-			<Route path="/" element={<Home />} />
-			<Route path="/login" element={<Login />} />
-			<Route path="/register" element={<Register />} />
-			<Route element={<ProtectedRoute />}>
-				<Route path="/profile" element={<Profile />} />
-			</Route>
-		</Routes>
+		<AuthProvider>
+			<Routes>
+				<Route element={<PageLayout />}>
+					<Route path="/" element={<Home />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/register" element={<Register />} />
+					<Route element={<ProtectedRoute />}>
+						<Route path="/profile" element={<Profile />} />
+					</Route>
+				</Route>
+			</Routes>
+		</AuthProvider>
 	);
 }
 
