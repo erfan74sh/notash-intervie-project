@@ -1,14 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 const Login = () => {
 	const [user, setUser] = useState({ email: "", password: "" });
 
+	const navigate = useNavigate();
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const data = await AuthService.login(user);
-			console.log(data);
+			const session = await AuthService.login(user);
+			if (session && session.id) {
+				navigate("/profile");
+			}
 		} catch (err) {
 			console.log(err);
 		}
