@@ -1,20 +1,29 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Formik, Form } from "formik";
+import * as yup from "yup";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// context
 import { authContext } from "../Providers/AuthProvider";
+// services
 import AuthService from "../services/auth.service";
 import UserService from "../services/user.service";
+// components
+import TextInput from "../components/Inputs/TextInput";
+// icons
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
-	const [loginForm, setLoginForm] = useState({ email: "", password: "" });
+	const navigate = useNavigate();
 
 	const { setUser } = useContext(authContext);
 
-	const navigate = useNavigate();
+	const [isLoading, setIsLoading] = useState(false);
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
+	const handleSubmit = async (values) => {
+		setIsLoading(true);
 		try {
-			const session = await AuthService.login(loginForm);
+			const session = await AuthService.login(values);
 			if (session && session.id) {
 				const { account } = await UserService.getCurrentUser();
 				const { username, email, created, updated } = account;
@@ -24,32 +33,37 @@ const Login = () => {
 			}
 		} catch (err) {
 			console.log(err);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 
-	const handleFormChange = (e) => {
-		setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
-	};
 	return (
 		<div className="content">
 			<h1>login page</h1>
-			<form onSubmit={handleSubmit}>
-				<label>email</label>
-				<input
-					type="email"
-					name="email"
-					value={loginForm.email}
-					onChange={(e) => handleFormChange(e)}
-				/>
-				<label>password</label>
-				<input
-					type="password"
-					name="password"
-					value={loginForm.password}
-					onChange={(e) => handleFormChange(e)}
-				/>
-				<button type="onSubmit">login</button>
-			</form>
+			<Formik
+				initialValues={{ email: "", password: "" }}
+				validationSchema={yup.object({
+					email: yup.string().email().required("required"),
+					password: yup
+						.string()
+						.min(8, "most be 8 characters or more")
+						.required("required"),
+				})}
+				onSubmit={handleSubmit}
+			>
+				<Form>
+					<TextInput type="email" name="email" label="email" />
+					<TextInput type="password" name="password" label="password" />
+					<button type="onSubmit">
+						{isLoading ? (
+							<FontAwesomeIcon icon={faCircleNotch} spin />
+						) : (
+							" login"
+						)}
+					</button>
+				</Form>
+			</Formik>
 		</div>
 	);
 };
