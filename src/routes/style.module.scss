@@ -2,6 +2,7 @@
 
 .container {
 	@include flex(column, center, center);
-	height: 100vh;
+	min-height: 100vh;
+	padding: 2rem 3rem;
 	background-color: $gray-50;
 }
