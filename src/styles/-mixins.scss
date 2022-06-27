@@ -1,0 +1,15 @@
+@mixin flex($direction: row, $justify: flex-start, $align: stretch) {
+	display: flex;
+
+	@if $direction != row {
+		flex-direction: $direction;
+	}
+
+	@if $justify != flex-start {
+		justify-content: $justify;
+	}
+
+	@if $align != stretch {
+		align-items: $align;
+	}
+}
