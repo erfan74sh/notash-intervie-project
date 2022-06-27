@@ -17,7 +17,9 @@ const login = ({ email, password }) => {
 			}
 			return session;
 		})
-		.catch((err) => console.error("errrr", err));
+		.catch((err) => {
+			console.error("error in login", err);
+		});
 };
 
 const logout = () => {
@@ -25,9 +27,10 @@ const logout = () => {
 	return Axios.post("Logout", { sessionId: id })
 		.then((response) => {
 			localStorage.removeItem("session");
+			localStorage.removeItem("user");
 			return response.data;
 		})
-		.catch((err) => console.log(err));
+		.catch((err) => console.error("error in logout", err));
 };
 
 const AuthService = {
