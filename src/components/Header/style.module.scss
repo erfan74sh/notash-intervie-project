@@ -1,23 +1,35 @@
-.nav {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 1rem 3rem;
-	background-color: burlywood;
-	font-size: 1.5rem;
-	&__links {
+@import "../../styles/styles.scss";
+header {
+	position: sticky;
+	top: 0;
+	.nav {
 		display: flex;
+		justify-content: space-between;
 		align-items: center;
-		&:first-child {
-			width: 30%;
-		}
-		&:last-child {
-			width: 30%;
-			justify-content: end;
-		}
-		.link {
-			margin: 0 0.8rem;
-			text-transform: capitalize;
+		padding: 1.5rem 3rem;
+		background-color: $gray-50;
+		font-size: 1.1rem;
+		border-bottom: 1px solid $blue-200;
+		box-shadow: 0px 0px 10px 0px $blue-200;
+		&__links {
+			display: flex;
+			align-items: center;
+			&:first-child {
+				width: 30%;
+			}
+			&:last-child {
+				width: 30%;
+				justify-content: end;
+			}
+			.link {
+				margin: 0 0.8rem;
+				text-transform: capitalize;
+				color: $gray-300;
+				transition: 250ms;
+				&:hover {
+					color: $gray-900;
+				}
+			}
 		}
 	}
 }
