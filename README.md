@@ -14,4 +14,4 @@ These are the tasks I was asked to do.:
 
 This Project was built as an interview project for Notash co. and I designed a simple UI for it.
 
-![image](https://github.com/erfan74sh/hamresan-project/blob/2771bb5e728240063832be242771532d7802cb65/src/assets/ui.jpg)
+![image](https://github.com/erfan74sh/notash-intervie-project/blob/52145c639f36b626e1df20f137aedde0d82591f0/src/assets/screenshot.png)
