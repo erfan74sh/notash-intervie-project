@@ -10,8 +10,12 @@ import PageLayout from "./routes/PageLayout";
 import AuthProvider from "./Providers/AuthProvider";
 // global style
 import "./App.scss";
+import useAuth from "./hooks/useAuth";
 
 function App() {
+	// useAuth custom hook watch in every route change and check if user is authorized or not
+	useAuth();
+
 	return (
 		<AuthProvider>
 			<Routes>
