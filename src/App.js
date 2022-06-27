@@ -5,10 +5,11 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./routes/ProtectedRoute";
-
-import "./App.scss";
-import AuthProvider from "./Providers/AuthProvider";
 import PageLayout from "./routes/PageLayout";
+
+import AuthProvider from "./Providers/AuthProvider";
+// global style
+import "./App.scss";
 
 function App() {
 	return (
