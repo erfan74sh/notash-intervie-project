@@ -1,4 +1,4 @@
-const API_KEY = "YTFmNzYzY2UtMzk3OS00NjEwLTk3ZWMtM2EzZDliNWI3ZWU2";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const authHeader = () => {
 	return {
