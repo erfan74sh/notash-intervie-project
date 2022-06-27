@@ -15,3 +15,7 @@ These are the tasks I was asked to do.:
 This Project was built as an interview project for Notash co. and I designed a simple UI for it.
 
 ![image](https://github.com/erfan74sh/notash-intervie-project/blob/52145c639f36b626e1df20f137aedde0d82591f0/src/assets/screenshot.png)
+
+## Deployment
+
+You can see this project live [here](https://notash-intervie-project.vercel.app/)!
