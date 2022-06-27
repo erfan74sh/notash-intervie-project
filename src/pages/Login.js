@@ -19,6 +19,7 @@ const Login = () => {
 	const { setUser } = useContext(authContext);
 
 	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState("");
 
 	const handleSubmit = async (values) => {
 		setIsLoading(true);
@@ -27,12 +28,11 @@ const Login = () => {
 			if (session && session.id) {
 				const { account } = await UserService.getCurrentUser();
 				const { username, email, created, updated } = account;
-				console.log({ username, email, created, updated });
 				setUser({ username, email, created, updated });
 				navigate("/profile");
 			}
 		} catch (err) {
-			console.log(err);
+			setError(err.response.data.detail);
 		} finally {
 			setIsLoading(false);
 		}
@@ -40,7 +40,7 @@ const Login = () => {
 
 	return (
 		<div className="content">
-			<h1>login page</h1>
+			<h1>Login Page</h1>
 			<Formik
 				initialValues={{ email: "", password: "" }}
 				validationSchema={yup.object({
@@ -53,9 +53,11 @@ const Login = () => {
 				onSubmit={handleSubmit}
 			>
 				<Form>
-					<TextInput type="email" name="email" label="email" />
-					<TextInput type="password" name="password" label="password" />
-					<button type="onSubmit">
+					<fieldset>
+						<TextInput type="email" name="email" label="email" />
+						<TextInput type="password" name="password" label="password" />
+					</fieldset>
+					<button type="onSubmit" className="btn btn--primary">
 						{isLoading ? (
 							<FontAwesomeIcon icon={faCircleNotch} spin />
 						) : (
@@ -64,6 +66,7 @@ const Login = () => {
 					</button>
 				</Form>
 			</Formik>
+			{error && <div className="status status--error">{error}</div>}
 		</div>
 	);
 };
