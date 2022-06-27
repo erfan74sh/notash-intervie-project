@@ -16,7 +16,7 @@ const Home = () => {
 			<h2 className={style.title}>Tasks</h2>
 			<ul className={style.items}>
 				{tasks.map((task) => (
-					<li className={style.item}>
+					<li className={style.item} key={task.id}>
 						<div className={style.item__header}>
 							<span
 								className={`${style.item__header__status} ${
@@ -30,7 +30,9 @@ const Home = () => {
 									size="lg"
 								/>
 							</span>
-							<h3 className={style.item__header__title}>{task.title}</h3>
+							<h3
+								className={style.item__header__title}
+							>{`${task.id}. ${task.title}`}</h3>
 						</div>
 						<p className={style.item__description}>
 							{task.processDesscription}
