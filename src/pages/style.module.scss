@@ -1,0 +1,32 @@
+@import "../styles/styles.scss";
+.title {
+	font-size: 1.2rem;
+	font-weight: 500;
+	margin-bottom: 1rem;
+}
+.items {
+	@include flex(column);
+	.item {
+		@include flex(column);
+		margin-bottom: 0.5rem;
+		&__header {
+			@include flex($align: center);
+			padding: 0.3rem 0;
+			border-bottom: 1px solid $blue-200;
+			&__status {
+				@include flex($align: center, $justify: center);
+				@include square(1.5rem, 50%);
+				margin-right: 0.5rem;
+			}
+			.status--done {
+				color: $green-500;
+			}
+			.status--not-done {
+				color: $red-500;
+			}
+			&__title {
+				font-weight: 500;
+			}
+		}
+	}
+}
