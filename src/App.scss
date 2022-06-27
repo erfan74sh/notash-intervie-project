@@ -2,6 +2,7 @@
 
 .content {
 	@include flex($direction: column, $align: center);
+	max-width: 50%;
 	padding: 1.5rem 1.8rem;
 	border-radius: 1rem;
 	background-color: $white;
