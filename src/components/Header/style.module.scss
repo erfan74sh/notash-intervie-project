@@ -3,17 +3,14 @@ header {
 	position: sticky;
 	top: 0;
 	.nav {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		@include flex($align: center, $justify: space-between);
 		padding: 1.5rem 3rem;
-		background-color: $gray-50;
-		font-size: 1.1rem;
 		border-bottom: 1px solid $blue-200;
 		box-shadow: 0px 0px 10px 0px $blue-200;
+		background-color: $gray-50;
+		font-size: 1.1rem;
 		&__links {
-			display: flex;
-			align-items: center;
+			@include flex($align: center);
 			&:first-child {
 				width: 30%;
 			}

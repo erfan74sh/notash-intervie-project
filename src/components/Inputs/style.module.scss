@@ -2,22 +2,21 @@
 
 .container {
 	position: relative;
-	display: flex;
-	flex-direction: column;
+	@include flex(column);
 	padding-bottom: 1rem;
 	.label {
 		margin-bottom: 0.1rem;
-		text-transform: capitalize;
 		color: $gray-500;
+		text-transform: capitalize;
 	}
 	.input {
 		padding: 0.4rem 0.5rem;
 		border: 1px solid $gray-100;
-		background-color: white;
-		outline: none;
 		border-radius: 0.4rem;
-		transition: 200ms;
+		outline: none;
 		box-shadow: 0px 0px 1px 1px transparent;
+		background-color: white;
+		transition: 200ms;
 		&:hover {
 			background-color: $blue-100;
 		}
@@ -37,8 +36,8 @@
 	.error {
 		position: absolute;
 		bottom: 0;
-		font-size: 0.8rem;
-		color: $red-500;
 		margin-left: 0.2rem;
+		color: $red-500;
+		font-size: 0.8rem;
 	}
 }
