@@ -4,7 +4,7 @@ export const tasks = [
 		status: "done",
 		title: "initial project in git",
 		processDesscription:
-			"This is done by git commands and VScode source control extension. You can see the repository on my GitHub.",
+			"This is done by git commands and VScode source control extension. You can see the repository on my GitHub and there is a README file available to read and also some additional information in home page of project for better documentation.",
 	},
 	{
 		id: 2,
