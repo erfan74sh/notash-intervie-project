@@ -6,7 +6,10 @@ import { authContext } from "../../Providers/AuthProvider";
 // services
 import AuthService from "../../services/auth.service";
 // icons
-import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import {
+	faCircleNotch,
+	faRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 // styles
 import style from "./style.module.scss";
 
@@ -51,23 +54,27 @@ const Header = () => {
 					{user.email ? (
 						<>
 							<li>{`welcome ${user.username}`}</li>
-							<li className={`${style.link} btn btn--secondary`}>
-								<button onClick={handleLogout}>
+							<li className={`${style.link} `}>
+								<button onClick={handleLogout} className="btn btn--secondary">
 									{isLoading ? (
 										<FontAwesomeIcon icon={faCircleNotch} spin />
 									) : (
-										" logout"
+										<FontAwesomeIcon icon={faRightFromBracket} />
 									)}
 								</button>
 							</li>
 						</>
 					) : (
 						<>
-							<li className={`${style.link} btn btn--secondary`}>
-								<NavLink to="/login">login</NavLink>
+							<li className={`${style.link} `}>
+								<NavLink to="/login" className="btn btn--secondary">
+									login
+								</NavLink>
 							</li>
-							<li className={`${style.link} btn btn--primary`}>
-								<NavLink to="/register">register</NavLink>
+							<li className={`${style.link}`}>
+								<NavLink to="/register" className="btn btn--primary">
+									register
+								</NavLink>
 							</li>
 						</>
 					)}
