@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 // context
-import { authContext } from "../Providers/AuthProvider";
+import { authContext } from "../../Providers/AuthProvider";
 // style
-import style from "./profile.module.scss";
+import style from "./style.module.scss";
 
 const Profile = () => {
 	const { user } = useContext(authContext);

@@ -6,7 +6,7 @@ import {
 	faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 // constants
-import { tasks } from "../data/constants";
+import { tasks } from "../../data/constants";
 // style
 import style from "./style.module.scss";
 

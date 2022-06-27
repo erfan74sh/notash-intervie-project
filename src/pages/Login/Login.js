@@ -4,12 +4,12 @@ import { Formik, Form } from "formik";
 import * as yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // context
-import { authContext } from "../Providers/AuthProvider";
+import { authContext } from "../../Providers/AuthProvider";
 // services
-import AuthService from "../services/auth.service";
-import UserService from "../services/user.service";
+import AuthService from "../../services/auth.service";
+import UserService from "../../services/user.service";
 // components
-import TextInput from "../components/Inputs/TextInput";
+import TextInput from "../../components/Inputs/TextInput";
 // icons
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 

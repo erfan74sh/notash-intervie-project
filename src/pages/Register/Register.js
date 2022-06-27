@@ -4,9 +4,9 @@ import { Formik, Form } from "formik";
 import * as yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // services
-import AuthService from "../services/auth.service";
+import AuthService from "../../services/auth.service";
 // components
-import TextInput from "../components/Inputs/TextInput";
+import TextInput from "../../components/Inputs/TextInput";
 // icons
 import {
 	faCircleCheck,

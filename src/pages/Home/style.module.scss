@@ -1,4 +1,4 @@
-@import "../styles/styles.scss";
+@import "../../styles/styles.scss";
 .title {
 	font-size: 1.2rem;
 	font-weight: 500;
@@ -10,7 +10,7 @@
 		@include flex(column);
 		margin-bottom: 0.5rem;
 		&__header {
-			@include flex($align: center);
+			@include flex();
 			padding: 0.3rem 0;
 			border-bottom: 1px solid $blue-200;
 			&__status {
