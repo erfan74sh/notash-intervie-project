@@ -27,7 +27,7 @@ const Header = () => {
 			await AuthService.logout();
 			navigate("/login");
 		} catch (err) {
-			console.log(err);
+			console.error(err);
 		} finally {
 			setIsLoading(false);
 			setUser({});
@@ -51,7 +51,7 @@ const Header = () => {
 					</li>
 				</ul>
 				<ul className={style.nav__links}>
-					{user.email ? (
+					{user?.email ? (
 						<>
 							<li>{`welcome ${user.username}`}</li>
 							<li className={`${style.link} `}>
@@ -66,7 +66,7 @@ const Header = () => {
 						</>
 					) : (
 						<>
-							<li className={`${style.link} `}>
+							<li className={`${style.link}`}>
 								<NavLink to="/login" className="btn btn--secondary">
 									login
 								</NavLink>
